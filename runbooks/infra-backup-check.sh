@@ -8,7 +8,7 @@ check() {
 }
 
 check qdrant 'curl -sf http://127.0.0.1:6335/healthz || curl -sf http://127.0.0.1:6335/'
-check redis 'redis-cli -p 6380 ping | grep -q PONG'
+check redis 'docker exec orion-platform-redis-1 redis-cli ping | grep -q PONG'
 if docker ps --format '{{.Names}}' 2>/dev/null | grep -qE 'qdrant|redis'; then
   echo "OK docker_containers"
 else
