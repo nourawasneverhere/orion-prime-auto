@@ -4,8 +4,9 @@ You are running Orion loop **L01 — Daily platform health**.
 
 SSH to the Orion VPS using secrets ORION_VPS_HOST and ORION_SSH credentials.
 
-On VPS (clone catalog if missing: /root/orion-prime-auto):
-  cd /root/orion-prime-auto && bash runbooks/daily-health.sh
+On VPS:
+  bash /root/orionprime/auto/runbooks/ensure-catalog-on-vps.sh
+  cd /root/orionprime/auto && bash runbooks/daily-health.sh
 
 If the script exits 0, reply with a short PASS summary listing each service and verify script.
 
@@ -16,4 +17,4 @@ If exit non-zero, reply FAIL with:
 
 Do not print ORION_PARTNER_TOKEN or ORION_LP_TOKEN values.
 
-Reference: loops/L01-daily-platform-health/LOOP.md in orion-prime-auto
+Reference: loops/L01-daily-platform-health/LOOP.md (includes verify:r1 graph checks · GRAPH-01)

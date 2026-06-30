@@ -1,10 +1,22 @@
-# VPS context for all Orion automation prompts
+# VPS context — Orion Prime Automations
 
-**Read first:** `CORE-BRIEF.md` and paste `AUTOMATION-SYSTEM-PROMPT.md` at top of every automation.
+| Key | Default |
+|-----|---------|
+| **Catalog on VPS** | `/root/orionprime/auto` |
+| **Product platform** | `/root/orion-platform` |
+| **Empire vault on VPS** | `/root/Empire` |
+| **Host** | `5.223.47.73` |
+| **mcp-orion** | `http://127.0.0.1:3004` |
+| **Investor Portal** | `http://127.0.0.1:3005` |
+| **Deal Room** | `http://127.0.0.1:3006` |
+| **Circle** | `http://127.0.0.1:3007` |
+| **Redis** | `127.0.0.1:6380` |
+| **Qdrant** | `http://127.0.0.1:6335` |
 
-- Host: ORION_VPS_HOST (default 5.223.47.73)
-- Platform root on VPS: /root/orion-platform
-- Vault on VPS: /root/Empire
-- Never log ORION_PARTNER_TOKEN, ORION_LP_TOKEN, or SSH private keys
-- Loop ids L01–L10 are defined in Empire Orion Prime Auto/MANIFEST.md
-- Production Gate 3 requires human-signed mandate; sandbox mandates are not sell-complete
+Bootstrap catalog:
+
+```bash
+bash /root/orionprime/auto/runbooks/ensure-catalog-on-vps.sh
+```
+
+Loop ids L01–L10: MANIFEST.md · Executable tasks: AUTOMATION-TASKS.md

@@ -1,0 +1,12 @@
+{
+  "name": "Orion OPS-02 Weekly Hardening E2E",
+  "description": "Mon 06:00 VPS hardening-e2e. Enterprise grade. NO scaffold.",
+  "workflow": {
+    "triggers": [{ "cron": { "cron": "0 6 * * 1" } }],
+    "actions": [],
+    "prompts": ["Paste prompts/MANDATORY-BRIEF.txt.\n\nOPS-02: SSH VPS; cd /root/orionprime/auto && bash runbooks/hardening-weekly.sh. PASS/FAIL with evidence."],
+    "gitConfig": { "repo": "nourawasneverhere/orion-prime-auto", "branch": "main" },
+    "memoryEnabled": true,
+    "agentOptions": { "skipInstall": false }
+  }
+}

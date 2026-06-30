@@ -1,0 +1,12 @@
+{
+  "name": "Orion OPS-04 Gate 3 Ops Nudge",
+  "description": "Fri informational Gate 3 nudge. No code changes.",
+  "workflow": {
+    "triggers": [{ "cron": { "cron": "0 9 * * 5" } }],
+    "actions": [],
+    "prompts": ["Paste prompts/MANDATORY-BRIEF.txt.\n\nOPS-04: loops/L04-gate3-ops-nudge/PROMPT.md — conversation log + mandate count nudge."],
+    "gitConfig": { "repo": "nourawasneverhere/orion-prime-auto", "branch": "main" },
+    "memoryEnabled": true,
+    "agentOptions": { "skipInstall": false }
+  }
+}

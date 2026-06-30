@@ -1,10 +1,13 @@
-Run Orion loop **L03 — Deal Room IC smoke**.
+Run Orion loop **L03 — Deal Room + IC queue smoke** (OPS-03 · GRAPH-02).
 
-Use ORION_PARTNER_TOKEN from automation secrets (never log it).
+SSH to VPS. ORION_PARTNER_TOKEN required in automation secrets.
 
-SSH VPS and run:
-  bash /root/Empire/Atlas/Ventures/Orion-Prime/Empire\ Orion\ Prime\ Auto/runbooks/ic-queue-smoke.sh
+  bash /root/orionprime/auto/runbooks/ensure-catalog-on-vps.sh
+  cd /root/orionprime/auto && bash runbooks/ic-queue-smoke.sh
 
-Report: health status, IC queue deal count, PASS/FAIL.
+PASS → IC queue shows deals (AGE properties path OK).
+FAIL → check nodeProps normalization in deal-room; journalctl empire-orion-platform -n 20.
 
-@Atlas/Ventures/Orion-Prime/Empire Orion Prime Auto/loops/L03-deal-room-ic-smoke/LOOP.md
+Never print token value.
+
+Reference: loops/L03-deal-room-ic-smoke/LOOP.md

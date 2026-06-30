@@ -1,0 +1,12 @@
+{
+  "name": "Orion OPS-03 IC Queue AGE Smoke",
+  "description": "Daily IC smoke — GRAPH-02. Requires ORION_PARTNER_TOKEN.",
+  "workflow": {
+    "triggers": [{ "cron": { "cron": "0 8 * * *" } }],
+    "actions": [],
+    "prompts": ["Paste prompts/MANDATORY-BRIEF.txt.\n\nOPS-03: SSH VPS; cd /root/orionprime/auto && bash runbooks/ic-queue-smoke.sh. Never log token."],
+    "gitConfig": { "repo": "nourawasneverhere/orion-prime-auto", "branch": "main" },
+    "memoryEnabled": true,
+    "agentOptions": { "skipInstall": false }
+  }
+}

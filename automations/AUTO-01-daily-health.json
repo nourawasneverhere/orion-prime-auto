@@ -1,0 +1,14 @@
+{
+  "name": "Orion OPS-01 Daily Platform + Graph Verify",
+  "description": "Enterprise OPS: SSH VPS /root/orionprime/auto runbooks/daily-health.sh. verify:r1/r2/r4. NO scaffold.",
+  "workflow": {
+    "triggers": [{ "cron": { "cron": "0 7 * * 1-5" } }],
+    "actions": [],
+    "prompts": [
+      "Paste prompts/MANDATORY-BRIEF.txt first.\n\nOPS-01: SSH VPS. bash /root/orionprime/auto/runbooks/ensure-catalog-on-vps.sh && cd /root/orionprime/auto && bash runbooks/daily-health.sh\n\nPASS → list OK lines (includes GRAPH-01 verify:r1).\nFAIL → report failed checks + journalctl -n 20. No stub fixes in OPS run."
+    ],
+    "gitConfig": { "repo": "nourawasneverhere/orion-prime-auto", "branch": "main" },
+    "memoryEnabled": true,
+    "agentOptions": { "skipInstall": false }
+  }
+}

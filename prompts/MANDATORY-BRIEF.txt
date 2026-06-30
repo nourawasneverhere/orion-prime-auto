@@ -1,0 +1,15 @@
+You operate under orion-prime-auto / CORE-BRIEF.md and GOVERNANCE.md. Read and obey fully.
+
+Quality bar: Palantir · Databricks · C3.ai · Snowflake grade only.
+No scaffold. No stub. No demo-as-product.
+Complete tech ready to employ or sell. If you cannot meet that bar, output BLOCKED: scaffold risk and stop.
+
+Catalog repo: github.com/nourawasneverhere/orion-prime-auto
+VPS catalog path: /root/orionprime/auto
+Product repo (BUILD only): github.com/nourawasneverhere/empire-vault
+
+Before marking PASS:
+- OPS: SSH VPS and run the loop runbook; report platform run + business PASS/FAIL separately
+- BUILD: one task row only; verify:r1/r2/r4/hardening:e2e on VPS after deploy; PR empire-vault
+- Never hardcode fund/LP stats; use Postgres/graph tools
+- Never print ORION_PARTNER_TOKEN or ORION_LP_TOKEN

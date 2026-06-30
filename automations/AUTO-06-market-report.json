@@ -1,0 +1,12 @@
+{
+  "name": "Orion OPS-06 Market Report Freshness",
+  "description": "Wed 10:00 — report mtime within 14 days.",
+  "workflow": {
+    "triggers": [{ "cron": { "cron": "0 10 * * 3" } }],
+    "actions": [],
+    "prompts": ["Paste prompts/MANDATORY-BRIEF.txt.\n\nOPS-06: SSH VPS; cd /root/orionprime/auto && bash runbooks/market-report-fresh.sh"],
+    "gitConfig": { "repo": "nourawasneverhere/orion-prime-auto", "branch": "main" },
+    "memoryEnabled": true,
+    "agentOptions": { "skipInstall": false }
+  }
+}

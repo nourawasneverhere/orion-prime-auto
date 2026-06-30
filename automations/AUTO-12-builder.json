@@ -1,0 +1,14 @@
+{
+  "name": "Orion BUILD L22 One Row Closer",
+  "description": "One BUILD-* row from TASK-QUEUE per run. empire-vault code + VPS verify. NO scaffold.",
+  "workflow": {
+    "triggers": [{ "cron": { "cron": "0 9 * * 1-5" } }],
+    "actions": [],
+    "prompts": [
+      "Paste prompts/MANDATORY-BRIEF.txt first.\n\nL22 BUILD: Read orion-prime-auto TASK-QUEUE.md first open BUILD row. Implement complete in empire-vault. Deploy+verify on VPS. ONE row. PR both repos. BLOCKED if scaffold risk."
+    ],
+    "gitConfig": { "repo": "nourawasneverhere/empire-vault", "branch": "main" },
+    "memoryEnabled": true,
+    "agentOptions": { "skipInstall": false }
+  }
+}

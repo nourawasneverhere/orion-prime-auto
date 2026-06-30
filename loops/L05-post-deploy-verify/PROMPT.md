@@ -1,10 +1,11 @@
-Run Orion loop **L05 — Post-deploy verify**.
+Run Orion loop **L05 — Post-deploy verify** (OPS-05).
 
-If this trigger is a git push, confirm changed files include orion-platform or mcp-vault.
+SSH to VPS after Orion deploy/push:
 
-SSH VPS and run:
-  bash /root/Empire/Atlas/Ventures/Orion-Prime/Empire\ Orion\ Prime\ Auto/runbooks/verify-only.sh
+  bash /root/orionprime/auto/runbooks/ensure-catalog-on-vps.sh
+  cd /root/orionprime/auto && bash runbooks/verify-only.sh
 
-Report PASS/FAIL per verify script. Do not run full deploy unless human approves.
+PASS → all verify scripts exit 0.
+FAIL → report which verify failed; recommend BUILD-01 regression fix in empire-vault (complete only).
 
-@Atlas/Ventures/Orion-Prime/Empire Orion Prime Auto/loops/L05-post-deploy-verify/LOOP.md
+Reference: loops/L05-post-deploy-verify/LOOP.md

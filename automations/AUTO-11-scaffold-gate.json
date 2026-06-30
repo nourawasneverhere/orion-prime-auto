@@ -1,0 +1,14 @@
+{
+  "name": "Orion GATE-21 Scaffold PR Gate",
+  "description": "Fail PRs with scaffold/stub on Orion paths in empire-vault. Palantir/Databricks/C3/Snowflake bar.",
+  "workflow": {
+    "triggers": [{ "git": { "pullRequest": { "repos": ["nourawasneverhere/empire-vault"], "ignoreDraftPrs": true, "opened": {} } } }],
+    "actions": [{ "prComment": {} }],
+    "prompts": [
+      "Paste prompts/MANDATORY-BRIEF.txt first.\n\nGATE-21: Review PR diff on orion-platform/, mcp-vault/, Orion paths. Enforce SCAFFOLD-REJECT.md. Comment PASS/FAIL. Never approve scaffold."
+    ],
+    "gitConfig": { "repo": "nourawasneverhere/empire-vault", "branch": "main" },
+    "memoryEnabled": true,
+    "agentOptions": { "skipInstall": false }
+  }
+}

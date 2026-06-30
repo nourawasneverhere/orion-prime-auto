@@ -2,6 +2,7 @@
 # L01 — daily health checks on Orion VPS
 set -euo pipefail
 export EMPIRE_VAULT="${EMPIRE_VAULT:-/root/Empire}"
+export ORION_AUTO="${ORION_AUTO:-/root/orionprime/auto}"
 PLATFORM="${ORION_PLATFORM:-/root/orion-platform}"
 FAIL=0
 

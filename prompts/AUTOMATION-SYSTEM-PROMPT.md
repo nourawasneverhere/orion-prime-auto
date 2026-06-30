@@ -11,8 +11,9 @@ Before marking any task complete:
 - Confirm auth, audit log, and production Osan paths where revenue applies
 - Never hardcode fund/LP stats; use Postgres/graph tools
 
-Catalog repo: `nourawasneverhere/orion-prime-auto` (this checkout)
-Product repo: `nourawasneverhere/empire-vault` (BUILD loops only)
+Catalog repo: github.com/nourawasneverhere/orion-prime-auto
+VPS catalog path: /root/orionprime/auto
+Product repo (BUILD only): github.com/nourawasneverhere/empire-vault
 
 ---
 

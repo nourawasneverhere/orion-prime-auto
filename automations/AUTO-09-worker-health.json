@@ -1,0 +1,12 @@
+{
+  "name": "Orion OPS-09 Worker Redis Health",
+  "description": "Daily 07:30 BullMQ/Redis — GRAPH-03 support.",
+  "workflow": {
+    "triggers": [{ "cron": { "cron": "30 7 * * *" } }],
+    "actions": [],
+    "prompts": ["Paste prompts/MANDATORY-BRIEF.txt.\n\nOPS-09: SSH VPS; cd /root/orionprime/auto && bash runbooks/worker-health.sh"],
+    "gitConfig": { "repo": "nourawasneverhere/orion-prime-auto", "branch": "main" },
+    "memoryEnabled": true,
+    "agentOptions": { "skipInstall": false }
+  }
+}

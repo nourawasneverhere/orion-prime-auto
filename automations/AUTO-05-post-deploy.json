@@ -1,0 +1,12 @@
+{
+  "name": "Orion OPS-05 Post-Deploy Verify",
+  "description": "Run verify-only.sh on VPS after Orion deploy.",
+  "workflow": {
+    "triggers": [],
+    "actions": [],
+    "prompts": ["Paste prompts/MANDATORY-BRIEF.txt.\n\nOPS-05: SSH VPS; cd /root/orionprime/auto && bash runbooks/verify-only.sh"],
+    "gitConfig": { "repo": "nourawasneverhere/orion-prime-auto", "branch": "main" },
+    "memoryEnabled": true,
+    "agentOptions": { "skipInstall": false }
+  }
+}

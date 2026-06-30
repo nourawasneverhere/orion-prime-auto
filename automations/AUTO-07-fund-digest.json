@@ -1,0 +1,12 @@
+{
+  "name": "Orion OPS-07 Fund Mandate Digest",
+  "description": "Mon 17:00 R4 digest — no secrets in output.",
+  "workflow": {
+    "triggers": [{ "cron": { "cron": "0 17 * * 1" } }],
+    "actions": [],
+    "prompts": ["Paste prompts/MANDATORY-BRIEF.txt.\n\nOPS-07: loops/L07-fund-mandate-digest/PROMPT.md"],
+    "gitConfig": { "repo": "nourawasneverhere/orion-prime-auto", "branch": "main" },
+    "memoryEnabled": true,
+    "agentOptions": { "skipInstall": false }
+  }
+}

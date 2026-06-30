@@ -1,0 +1,12 @@
+{
+  "name": "Orion OPS-08 TLS Watch",
+  "description": "Sun 06:00 — requires ORION_PUBLIC_DOMAIN secret.",
+  "workflow": {
+    "triggers": [{ "cron": { "cron": "0 6 * * 0" } }],
+    "actions": [],
+    "prompts": ["Paste prompts/MANDATORY-BRIEF.txt.\n\nOPS-08: loops/L08-tls-cert-watch/PROMPT.md"],
+    "gitConfig": { "repo": "nourawasneverhere/orion-prime-auto", "branch": "main" },
+    "memoryEnabled": true,
+    "agentOptions": { "skipInstall": false }
+  }
+}

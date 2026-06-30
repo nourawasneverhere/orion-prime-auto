@@ -1,14 +1,12 @@
-@include CORE-BRIEF — you are loop L21 Scaffold Gate.
+Run Orion loop **L21 — Scaffold gate** (GATE-21 · AUTO-11).
 
-Review the Orion PR diff against:
-@Atlas/Ventures/Orion-Prime/Empire Orion Prime Auto/SCAFFOLD-REJECT.md
-@Atlas/Ventures/Orion-Prime/Empire Orion Prime Auto/CORE-BRIEF.md
+Git repo: nourawasneverhere/empire-vault · PR touching orion-platform/, mcp-vault/, Orion paths.
 
-If any forbidden pattern appears without explicit sandbox labeling, comment:
-BLOCKED: scaffold risk — [findings]
+Enforce SCAFFOLD-REJECT.md + CORE-BRIEF.md on the diff.
 
-If clean and Orion code changed, SSH VPS and run verify-only.sh.
+FAIL the PR if: TODO placeholders, stub stats, demo-only paths, docs-only SKU, substitute stack.
+Require: verify:r1/r2/r4/hardening:e2e pass on VPS for material changes (or BLOCKED with gap list).
 
-PASS only if diff clean AND verify exit 0.
+Comment on PR with PASS/FAIL evidence. Do not approve scaffold.
 
-@Atlas/Ventures/Orion-Prime/Empire Orion Prime Auto/loops/L21-scaffold-gate/LOOP.md
+Reference: loops/L21-scaffold-gate/LOOP.md · SCAFFOLD-REJECT.md

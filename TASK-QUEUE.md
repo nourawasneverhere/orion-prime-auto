@@ -1,137 +1,68 @@
-# Orion Prime — Automation Task Queue
+# Orion Prime — Task Queue (automation-executable)
 
-> **OPS loops** = monitor (L01–L10). **BUILD rows** = ship one checklist item (L22). **Human** = not automatable.  
-> Canonical checklist: `empire-vault` → `Atlas/Ventures/Orion-Prime/Operations/Engine/Build/Orion-Complete-Products-Services-Tech-Checklist.md`
+> Canonical task definitions: **AUTOMATION-TASKS.md**  
+> Full product checklist (including human rows): empire-vault → `Orion-Complete-Products-Services-Tech-Checklist.md`
 
-**Legend:** ⬜ Open · 🟡 In progress · ✅ Done · 🚫 Human-only · 🔲 Loop draft (see MANIFEST)
+**Legend:** ⬜ Open · 🟡 In progress · ✅ Done · ⏸ Blocked (secret/domain) · 🚫 Not automatable · 🚧 Product not built
 
----
-
-## Track OPS — Monitor (Cursor Automations L01–L10)
-
-| Id | Loop | Phase | Status | Cursor |
-|----|------|-------|--------|--------|
-| L01 | Daily platform health | R1–R2 | 🔲 draft | Cron weekdays 07:00 · repo `orion-prime-auto` |
-| L02 | Weekly hardening E2E | R1–R2 | 🔲 draft | Mon 06:00 |
-| L03 | Deal Room + IC smoke | R2 | 🔲 draft | Daily 08:00 |
-| L04 | Gate 3 ops nudge | R1 | 🔲 draft | Fri 09:00 |
-| L05 | Post-deploy verify | R1–R4 | 🔲 draft | Git push Orion paths |
-| L06 | Market report freshness | R2 | 🔲 draft | Wed 10:00 |
-| L07 | Fund + mandate digest | R4 | 🔲 draft | Mon 17:00 |
-| L08 | TLS cert watch | Infra | 🔲 draft | Sun 06:00 · needs domain |
-| L09 | BullMQ / worker health | R2–R3 | 🔲 draft | Daily 07:30 |
-| L10 | Qdrant + Redis backup | Infra | 🔲 draft | Sun 05:00 |
-
-**OPS exit:** platform stays green — automations **prove**, they do not patch with stubs.
+**VPS catalog:** `/root/orionprime/auto`
 
 ---
 
-## Track GATE — PR review (L21)
+## OPS — schedule in Cursor (Tier 1)
 
-| Id | Loop | Phase | Status |
-|----|------|-------|--------|
-| L21 | Scaffold gate on PR | R1–R6 | 🔲 planned |
+| Id | Status | AUTO | Loop |
+|----|--------|------|------|
+| OPS-01 Daily platform + graph verify | ⬜ | AUTO-01 | L01 |
+| OPS-02 Weekly hardening E2E | ⬜ | AUTO-02 | L02 |
+| OPS-03 IC queue / AGE smoke | ⬜ | AUTO-03 | L03 |
+| OPS-04 Gate 3 ops nudge | ⬜ | AUTO-04 | L04 |
+| OPS-05 Post-deploy verify | ⬜ | AUTO-05 | L05 |
+| OPS-06 Market report freshness | ⬜ | AUTO-06 | L06 |
+| OPS-07 Fund + mandate digest | ⬜ | AUTO-07 | L07 |
+| OPS-08 TLS public URLs | ⏸ | AUTO-08 | L08 |
+| OPS-09 Worker + Redis health | ⬜ | AUTO-09 | L09 |
+| OPS-10 Qdrant + Redis infra | ⬜ | AUTO-10 | L10 |
 
-Enforces `SCAFFOLD-REJECT.md` + verify on every Orion diff in empire-vault.
-
----
-
-## Track BUILD — Checklist rows (L22, one row per run)
-
-### R1 — First revenue (Gate 3)
-
-| Row id | Item | Status | Automation |
-|--------|------|--------|------------|
-| R1-LEGAL-NDA | NDA template counsel review | 🚫 | Legal human |
-| R1-LEGAL-MANDATE | Advisory mandate template | 🚫 | Legal human |
-| R1-GATE3 | Production Gate 3 close (signed mandate + deposit) | 🚫 | Mom Test + human |
-| R1-OSAN-PROD | Remove sandbox-only Osan path; production `book_orion_mandate_fee` only | ⬜ | L22 |
-| R1-MEMO-CLIENT | Remove synthetic default memos from client paths | ⬜ | L22 |
-| R1-INVESTOR-SEED | Replace hardcoded investor list with curated JSON + graph | ⬜ | L22 |
-
-### R2 — Advisory catalog
-
-| Row id | Item | Status | Automation |
-|--------|------|--------|------------|
-| R2-CIRCLE-INSIDER | Circle Insider Stripe/Osan billing (not deferred) | ⬜ | L22 |
-| R2-DEAL-ROOM | Deal Room auth + IC + workspace (employ daily) | ✅ | verify:r2 |
-| R2-BRIEF | Orion Brief issue #1 + subscribers | ✅ | verify:r2 |
-| R2-PORTAL-SCAFFOLD | Remove scaffold portal/deal-room on VPS | ⬜ | L22 |
-| R2-MARKET-AGENT | Weekly market reports in Engine/Reports/ | ⬜ | L22 |
-
-### R3 — Operations catalog
-
-| Row id | Item | Status | Automation |
-|--------|------|--------|------------|
-| R3-PORTFOLIO | Portfolio monitor + AssetHealth alerts | ⬜ | L22 · product not built |
-| R3-OPS-CATALOG | Operations product SKUs + Osan paths | ⬜ | L22 |
-| R3-WORKERS | R3 worker pipeline extensions | ⬜ | L22 |
-
-### R4 — Capital
-
-| Row id | Item | Status | Automation |
-|--------|------|--------|------------|
-| R4-PORTAL | Investor Portal LP auth + real fund snapshot | ✅ | verify:r4 |
-| R4-MANDATE-TOOLS | Mandate + fund MCP tools | ✅ | verify:r4 |
-| R4-GHOST-MCP | Ghost MCP capital routing | ⬜ | L22 |
-| R4-TLS | HTTPS nginx + certbot (needs domain) | ⬜ | L22 · human DNS |
-
-### R5 — Wealth
-
-| Row id | Item | Status | Automation |
-|--------|------|--------|------------|
-| R5-WEALTH-WF | Ownership / wealth workflows | ⬜ | L22 · not built |
-| R5-RESIDENCY | Residency advisory package | ⬜ | L22 |
-
-### R6 — Fund / institutional
-
-| Row id | Item | Status | Automation |
-|--------|------|--------|------------|
-| R6-FUND-I | Fund I institutional portal | ⬜ | L22 · not built |
-| R6-CHIEF-AI | Chief AI MNPI boundaries | ⬜ | L22 |
-| R6-ASEAN | ASEAN Network institutional tier | ⬜ | L22 |
-
-### Infra master (checklist L2–L4)
-
-| Row id | Item | Status | Automation |
-|--------|------|--------|------------|
-| INFRA-TLS | Public URLs not 127.0.0.1 only | ⬜ | L22 + L08 |
-| INFRA-DEPLOY | One-command deploy + verify runbook | ⬜ | L22 |
-| INFRA-MCP-OSAN-PROD | mcp-osan production Orion revenue | ⬜ | L22 |
-| INFRA-GHOST | Ghost MCP (R4) | ⬜ | L22 |
+**Graph proof:** OPS-01 (verify:r1) + OPS-03 (IC/AGE) — see AUTOMATION-TASKS.md GRAPH-01..03
 
 ---
 
-## Track FUTURE OPS (R5–R6, create when product exists)
+## GATE — PR (Tier 2)
 
-| Id | Loop | Phase | Status |
-|----|------|-------|--------|
-| L16 | Quarterly hold/exit report | R5 | planned |
-| L17 | Wealth workflow job health | R5 | planned |
-| L18 | Fund capital call reconcile | R6 | planned |
-| L19 | Chief AI MNPI red-team | R6 | planned |
-| L20 | L10 governance checklist runner | R6 | planned |
-
-See `phases/R5-R6-fund.md`.
+| Id | Status | AUTO |
+|----|--------|------|
+| GATE-21 Scaffold gate | ⬜ | AUTO-11 |
 
 ---
 
-## Human-only (never automate)
+## BUILD — one per L22 run (Tier 3)
 
-- Mom Test live sales calls  
-- Production Gate 3 signature + deposit  
-- Legal counsel review  
-- LP token issuance to real clients (L07 digest only)  
-- Full deploy on every cron (use L05 on intentional pushes)
+| Id | Status | Notes |
+|----|--------|-------|
+| BUILD-01 OPS regression fix | ⬜ | Only when OPS fails |
+| BUILD-02 Circle Insider billing | ⬜ | R2 |
+| BUILD-03 HTTPS + certbot | ⏸ | Needs `ORION_PUBLIC_DOMAIN` |
+| BUILD-04 Ghost MCP routing | 🚧 | R4 not built |
+| BUILD-05 Twin-spec AGE writer sync | ⬜ | Graph L2 |
+| BUILD-06 Graph staleness monitor | ⬜ | Graph L2 |
+| BUILD-07 mcp-osan production path | ⬜ | L1 MCP |
+| BUILD-08 AssetHealth real KPI | 🚧 | R3 |
+| BUILD-09 SPV/syndication workflows | 🚧 | R4 |
+| BUILD-10 Fund I institutional | 🚧 | R6 |
+
+**AUTO-12:** first ⬜ row above (skip ⏸ 🚧 unless unblocked)
 
 ---
 
-## Coverage honesty
+## Human-only (never in Cursor)
 
-| Covered in this repo | Not fully specced yet |
-|----------------------|------------------------|
-| L01–L10 OPS loop specs + runbooks | Per-row `tasks/` files like origine-auto (optional next) |
-| L21–L22 gate + build model | Every checklist checkbox as atomic task file |
-| TASK-QUEUE backlog by release | R5–R6 ops loops L16–L20 |
+Gate 3 production mandate · legal counsel · Mom Test · real LP token issuance · domain purchase
 
-**End-to-end Orion Prime** = all BUILD rows ✅ + OPS loops live + human Gate 3 closed. Automations **monitor** (OPS) and **close one row** (L22) — they do not replace sales or legal.
+---
+
+## After each BUILD run
+
+1. PR **empire-vault** with verify output  
+2. PR **orion-prime-auto** — update Status column here → ✅  
+3. Re-run linked OPS task → PASS
