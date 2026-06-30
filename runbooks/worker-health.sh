@@ -2,7 +2,10 @@
 # L09 — BullMQ / Redis / worker health
 set -euo pipefail
 FAIL=0
-check() { if "$@"; then echo "OK $1"; else echo "FAIL $1"; FAIL=1; fi; }
+check() {
+  local name="$1"; shift
+  if bash -c "$*" >/dev/null 2>&1; then echo "OK $name"; else echo "FAIL $name"; FAIL=1; fi
+}
 
 check redis_ping 'redis-cli -p 6380 ping | grep -q PONG'
 check systemd_orion 'systemctl is-active --quiet empire-orion-platform'
